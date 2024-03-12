@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <h1 id="encabezado"></h1>
+    <input id="input" type="text" value="" />
+    <button id="button">Comprobar</button>
+    <label id="label"></label>
+
+    <script>
+        document.title = 'Clase 1 - Seminarios y Talleres de Actualización II';
+        
+
+        let encabezado = document.querySelector('#encabezado');
+        let input = document.querySelector('#input');
+        let label = document.querySelector('#label');
+        let button = document.querySelector('#button');
+
+
+        let texto = 'Clase 1 - Seminarios y Talleres de Actualización II';
+        document.addEventListener('DOMContentLoaded', function () {
+            texto.split('').forEach((letra, i) => {
+                setTimeout(() => {
+                    encabezado.textContent += letra;
+                }, 150 * i);
+            });
+        });
+
+        button.addEventListener('click', ejecutar);
+
+        input.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                ejecutar();
+            } else {
+                label.textContent = '';
+            }
+        });
+
+        function ejecutar() {
+
+            if (!input.value) {
+                label.style.color = 'red';
+                label.style.backgroundColor = 'yellow';
+                label.textContent = 'Tenes que escribir algo en el input, por favor.';
+            }
+            else {
+                label.textContent = '';
+                let textoShow = 'Usted cargo esto: ' + input.value;
+                alert(textoShow);
+                console.log(textoShow);
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
